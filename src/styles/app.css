@@ -1,0 +1,108 @@
+body { margin: 0; }
+
+.app {
+  --bg: #fff0f6;
+  --ink: #5a2a43;
+  --mut: #a8688a;
+  --line: #ffc2dc;
+  --card: #ffffff;
+  --pink: #ff7eb6;
+  --pink-d: #e0457f;
+  --soft: #ffd9ea;
+  --hl: #ffe45e;
+  font-family: "Mali", "Noto Sans Thai", "Sarabun", system-ui, sans-serif;
+  background:
+    radial-gradient(circle at 12% 8%, #ffd9ea 0 90px, transparent 91px),
+    radial-gradient(circle at 92% 22%, #ffe3f0 0 70px, transparent 71px),
+    var(--bg);
+  background-attachment: fixed;
+  color: var(--ink);
+  min-height: 100vh;
+  padding: 0 16px 64px;
+  line-height: 1.85;
+}
+@media (prefers-color-scheme: dark) {
+  .app {
+    --bg: #2a1421; --ink: #ffe3f0; --mut: #e6a3c4; --line: #6a2f4d;
+    --card: #3a1b2e; --pink: #ff8fc2; --pink-d: #ffb3d6; --soft: #5a2742;
+    --hl: #8a5a00;
+  }
+}
+.app * { box-sizing: border-box; }
+.app main, .app .inner { max-width: 760px; margin: 0 auto; }
+
+/* hero */
+.hero { text-align: center; padding: 36px 0 14px; }
+.hero .deco { font-size: 1.4rem; letter-spacing: .3em; }
+.hero h1 {
+  margin: 6px 0 0; font-size: 2rem; font-weight: 700; color: var(--pink-d);
+  text-shadow: 2px 2px 0 var(--soft);
+}
+.hero p { margin: 4px 0 0; color: var(--mut); }
+
+/* sticky search + nav */
+.sticky {
+  position: sticky; top: 0; z-index: 10; padding: 10px 0 8px;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+}
+.app input {
+  width: 100%; padding: 12px 18px; font: inherit; color: inherit;
+  background: var(--card); border: 2px solid var(--line); border-radius: 999px;
+}
+.app input::placeholder { color: var(--mut); opacity: .8; }
+.app input:focus, .app button:focus-visible {
+  outline: 3px solid var(--pink); outline-offset: 2px;
+}
+.app nav {
+  display: flex; gap: 6px; margin-top: 10px; padding-bottom: 4px;
+  overflow-x: auto; scrollbar-width: thin;
+}
+.app nav button {
+  flex: none; min-width: 36px; height: 36px; padding: 0 8px;
+  font: inherit; font-weight: 600; color: var(--pink-d);
+  background: var(--card); border: 2px solid var(--line); border-radius: 999px;
+  cursor: pointer;
+}
+.app nav button:hover { background: var(--pink); color: #fff; border-color: var(--pink); }
+
+/* toolbar */
+.app .bar { text-align: center; color: var(--mut); font-size: .9rem; margin: 14px 0 10px; }
+
+/* cards: stacked straight down */
+.app .card {
+  position: relative; background: var(--card);
+  border: 2.5px dashed var(--line); border-radius: 24px;
+  padding: 18px 22px 12px; margin-bottom: 18px;
+  scroll-margin-top: 130px;
+  box-shadow: 0 6px 0 var(--soft);
+}
+.app .card h2 {
+  display: flex; align-items: center; gap: 12px;
+  margin: 0 0 8px; font-size: 1.15rem; font-weight: 700; color: var(--pink-d);
+}
+.app .card h2 b {
+  flex: none; min-width: 38px; height: 38px; display: grid; place-items: center;
+  border-radius: 50%; background: var(--pink); color: #fff; font-size: 1rem;
+  box-shadow: 0 3px 0 var(--pink-d);
+}
+
+/* items */
+.app ul { margin: 0; padding: 0; list-style: none; }
+.app li { position: relative; padding: 6px 0 6px 26px; }
+.app li::before {
+  content: "♥"; position: absolute; left: 2px; top: 6px;
+  color: var(--pink); font-size: .9rem;
+}
+
+.app mark { background: var(--hl); color: inherit; border-radius: 6px; padding: 0 3px; }
+.app .empty { color: var(--mut); text-align: center; padding: 32px 0; }
+.app footer { text-align: center; color: var(--mut); padding: 20px 0 0; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .app nav button { transition: background .15s, color .15s; }
+}
+@media (max-width: 480px) {
+  .hero h1 { font-size: 1.6rem; }
+  .app .card { padding: 16px 16px 10px; border-radius: 20px; }
+}
