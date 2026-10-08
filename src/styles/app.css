@@ -83,7 +83,7 @@ body { margin: 0; }
 }
 .app .card h2 b {
   flex: none; min-width: 38px; height: 38px; display: grid; place-items: center;
-  border-radius: 50%; background: var(--pink); color: #fff; font-size: 1rem;
+  border-radius: 50%; background: var(--pink); color: #ffffff; font-size: 1rem;
   box-shadow: 0 3px 0 var(--pink-d);
 }
 
@@ -106,3 +106,22 @@ body { margin: 0; }
   .hero h1 { font-size: 1.6rem; }
   .app .card { padding: 16px 16px 10px; border-radius: 20px; }
 }
+
+/* page switcher */
+.app nav.pager {
+  justify-content: center; gap: 10px; margin: 8px 0 18px;
+}
+.app nav.pager button {
+  height: 42px; padding: 0 20px; font-size: 1rem;
+}
+.app nav.pager button.active {
+  background: var(--pink); color: #fff; border-color: var(--pink-d);
+  box-shadow: 0 3px 0 var(--pink-d);
+}
+.app .next-page {
+  display: block; margin: 8px auto 0; padding: 10px 24px;
+  font: inherit; font-weight: 600; color: #fff; cursor: pointer;
+  background: var(--pink); border: 0; border-radius: 999px;
+  box-shadow: 0 3px 0 var(--pink-d);
+}
+.app .next-page:hover { filter: brightness(1.05); }
