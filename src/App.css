@@ -150,3 +150,11 @@ body { margin: 0; }
 .app .odds-table .chip.push      { background: #dfe3ff; color: #4655e0; border: 1.5px solid #b3bcff; }
 .app .odds-table .chip.half-win  { background: #fdf8b5; color: #a88700; border: 1.5px solid #ecdf5a; }
 .app .odds-table .chip.win       { background: #d8f3df; color: #238c46; border: 1.5px solid #9fdcb3; }
+
+/* หน้าที่ปุ่มเป็นสีฟ้า: การ์ดเริ่มสีฟ้า แล้วสลับชมพู */
+.app main.tone-blue .card {
+  --c: var(--blue); --c-d: var(--blue-d); --c-soft: #d4e5fb; --c-bg: #f5f9ff;
+}
+.app main.tone-blue .card:nth-of-type(even) {
+  --c: var(--pink); --c-d: var(--pink-d); --c-soft: var(--soft); --c-bg: #fff8fb;
+}

@@ -48,6 +48,7 @@ export default function App() {
   };
 
   const next = PAGES[(PAGES.findIndex((p) => p.id === page) + 1) % PAGES.length];
+  const tone = PAGES.findIndex((p) => p.id === page) % 2 === 1 ? "tone-blue" : "";
 
   return (
     <div className="app">
@@ -70,7 +71,7 @@ export default function App() {
         ))}
       </nav>
 
-      <main>
+      <main className={tone}>
         {page === "fees" && <FeeCard />}
         {page === "check" && <CheckCard />}
         {page === "black" && <BlackCard />}
