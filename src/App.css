@@ -132,3 +132,21 @@ body { margin: 0; }
   .hero h1 { font-size: 1.1rem; padding: 6px 16px; }
   .app .card { padding: 18px 16px 10px; border-radius: 22px; }
 }
+
+/* odds tables */
+.app .table-wrap { overflow-x: auto; margin: 4px 0 12px; padding-bottom: 2px; }
+.app .odds-table { margin: 0; min-width: 440px; }
+.app .odds-table th { font-size: .92rem; line-height: 1.4; padding: 8px 10px; }
+.app .odds-table td { white-space: nowrap; padding: 7px 10px; }
+.app .odds-table td:first-child { font-weight: 700; color: var(--c-d); }
+.app .odds-table td:last-child { font-weight: 400; color: var(--ink); }
+
+.app .chip {
+  display: inline-block; padding: 1px 14px; border-radius: 999px;
+  font-size: .9rem; font-weight: 600; white-space: nowrap;
+}
+.app .odds-table .chip.lose      { background: #ffdcdc; color: #e03e3e; border: 1.5px solid #ffb3b3; }
+.app .odds-table .chip.half-lose { background: #ffe8cc; color: #ee7f0f; border: 1.5px solid #ffc88a; }
+.app .odds-table .chip.push      { background: #dfe3ff; color: #4655e0; border: 1.5px solid #b3bcff; }
+.app .odds-table .chip.half-win  { background: #fdf8b5; color: #a88700; border: 1.5px solid #ecdf5a; }
+.app .odds-table .chip.win       { background: #d8f3df; color: #238c46; border: 1.5px solid #9fdcb3; }

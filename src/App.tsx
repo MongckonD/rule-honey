@@ -6,8 +6,9 @@ import CheckCard from "./components/CheckCard";
 import BlackCard from "./components/BlackCard";
 import KaengCard from "./components/KaengCard";
 import FootballCard from "./components/FootballCard";
+import OddsCard from "./components/OddsCard";
 
-type Page = "fees" | "check" | "rules" | "black" | "kaeng" | "football";
+type Page = "fees" | "check" | "rules" | "black" | "kaeng" | "football" | "odds";
 
 const PAGES: { id: Page; label: string }[] = [
   { id: "fees", label: "1 · ค่าธรรมเนียม" },
@@ -16,6 +17,7 @@ const PAGES: { id: Page; label: string }[] = [
   { id: "black", label: "4 · กฎดำ" },
   { id: "kaeng", label: "5 · กฎแคง" },
   { id: "football", label: "6 · กฎเดิมบอล" },
+  { id: "odds", label: "7 · กฎอัตราต่อรอง" },
 ];
 
 const SUBTITLE: Partial<Record<Page, string>> = {
@@ -74,6 +76,7 @@ export default function App() {
         {page === "black" && <BlackCard />}
         {page === "kaeng" && <KaengCard />}
         {page === "football" && <FootballCard />}
+        {page === "odds" && <OddsCard />}
         {page === "rules" &&
           RULES.map((rule) => <RuleCard key={rule.no} rule={rule} />)}
 
