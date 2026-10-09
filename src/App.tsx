@@ -3,16 +3,22 @@ import { RULES } from "./data/rules";
 import RuleCard from "./components/RuleCard";
 import FeeCard from "./components/FeeCard";
 import CheckCard from "./components/CheckCard";
+import BlackCard from "./components/BlackCard";
+import KaengCard from "./components/KaengCard";
+import FootballCard from "./components/FootballCard";
 
-type Page = "fees" | "check" | "rules";
+type Page = "fees" | "check" | "rules" | "black" | "kaeng" | "football";
 
 const PAGES: { id: Page; label: string }[] = [
   { id: "fees", label: "1 · ค่าธรรมเนียม" },
   { id: "check", label: "2 · เช็คไฟล์NAM" },
   { id: "rules", label: "3 · กฎกลาง" },
+  { id: "black", label: "4 · กฎดำ" },
+  { id: "kaeng", label: "5 · กฎแคง" },
+  { id: "football", label: "6 · กฎเดิมบอล" },
 ];
 
-const SUBTITLE: Record<Page, string> = {
+const SUBTITLE: Partial<Record<Page, string>> = {
   fees: "ค่าธรรมเนียมและกฎการโอน",
   check: "กฎการเช็คไฟล์NAM",
   rules: "ข้อ 1-21 คือ กฎกลาง Nam autthaporn เสียงของกลางถือเป็นที่สิ้นสุด",
@@ -46,7 +52,7 @@ export default function App() {
       <header className="hero">
         <div className="script" aria-hidden>Namphueng</div>
         <h1><span className="heart">♥</span> เกณฑ์การตัดสินน้ำผึ้ง <span className="heart">♥</span></h1>
-        <p className="sub">{SUBTITLE[page]}</p>
+        {SUBTITLE[page] && <p className="sub">{SUBTITLE[page]}</p>}
       </header>
 
       <nav className="pager" aria-label="เลือกหน้า">
@@ -65,6 +71,9 @@ export default function App() {
       <main>
         {page === "fees" && <FeeCard />}
         {page === "check" && <CheckCard />}
+        {page === "black" && <BlackCard />}
+        {page === "kaeng" && <KaengCard />}
+        {page === "football" && <FootballCard />}
         {page === "rules" &&
           RULES.map((rule) => <RuleCard key={rule.no} rule={rule} />)}
 
