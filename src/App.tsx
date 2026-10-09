@@ -2,20 +2,26 @@ import { useEffect, useState } from "react";
 import { RULES } from "./data/rules";
 import RuleCard from "./components/RuleCard";
 import FeeCard from "./components/FeeCard";
+import CheckCard from "./components/CheckCard";
 
-type Page = "fees" | "rules";
+type Page = "fees" | "check" | "rules";
 
 const PAGES: { id: Page; label: string }[] = [
   { id: "fees", label: "1 · ค่าธรรมเนียม" },
-  { id: "rules", label: "2 · กฎกลาง" },
+  { id: "check", label: "2 · เช็คไฟล์NAM" },
+  { id: "rules", label: "3 · กฎกลาง" },
 ];
 
 const SUBTITLE: Record<Page, string> = {
-  fees: "ค่าธรรมเนียมและกฎการโอน · เสียงของกลางถือเป็นที่สิ้นสุด",
-  rules: "กฎกลางเฉพาะ ข้อ 1–19 · เสียงของกลางถือเป็นที่สิ้นสุด",
+  fees: "ค่าธรรมเนียมและกฎการโอน",
+  check: "กฎการเช็คไฟล์NAM",
+  rules: "ข้อ 1-21 คือ กฎกลาง Nam autthaporn เสียงของกลางถือเป็นที่สิ้นสุด",
 };
 
-const fromHash = (): Page => (location.hash === "#rules" ? "rules" : "fees");
+const fromHash = (): Page => {
+  const h = location.hash.replace("#", "");
+  return PAGES.some((p) => p.id === h) ? (h as Page) : "fees";
+};
 
 export default function App() {
   const [page, setPage] = useState<Page>(fromHash);
@@ -33,7 +39,7 @@ export default function App() {
     location.hash = p;
   };
 
-  const other = PAGES.find((p) => p.id !== page)!;
+  const next = PAGES[(PAGES.findIndex((p) => p.id === page) + 1) % PAGES.length];
 
   return (
     <div className="app">
@@ -57,14 +63,13 @@ export default function App() {
       </nav>
 
       <main>
-        {page === "fees" ? (
-          <FeeCard />
-        ) : (
-          RULES.map((rule) => <RuleCard key={rule.no} rule={rule} />)
-        )}
+        {page === "fees" && <FeeCard />}
+        {page === "check" && <CheckCard />}
+        {page === "rules" &&
+          RULES.map((rule) => <RuleCard key={rule.no} rule={rule} />)}
 
-        <button className="next-page" onClick={() => go(other.id)}>
-          ไปหน้า {other.label} →
+        <button className="next-page" onClick={() => go(next.id)}>
+          ไปหน้า {next.label} →
         </button>
 
         <footer>🎀 เสียงของกลางถือเป็นที่สิ้นสุด 🎀</footer>
